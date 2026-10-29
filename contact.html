@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10233f">
+    <title>Contact Us | Civic Safety Information Project</title>
+    <link rel="icon" type="image/png" href="images/fbi-seal.png">
+    <link rel="stylesheet" href="contact.css">
+    <script src="contact.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="contact.html" aria-label="Civic Safety Information Project home">
+                <span class="brand-mark" aria-hidden="true">CS</span>
+                <span class="brand-name">Civic Safety<br>Information Project</span>
+            </a>
+            <nav class="primary-nav" aria-label="Main navigation">
+                <a href="#report-form">Submit a report</a>
+                <a href="#field-office">Field offices</a>
+                <a href="#headquarters">Contact information</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="page-intro" aria-labelledby="page-title">
+            <div class="content-width">
+                <p class="eyebrow">Independent practice project</p>
+                <h1 id="page-title">Contact Us</h1>
+                <p class="intro-copy">
+                    Use this form to describe suspected crimes or share information that may help keep your community safe.
+                </p>
+            </div>
+        </section>
+
+        <div class="emergency-notice content-width" role="note" aria-label="Emergency information">
+            <span class="emergency-indicator" aria-hidden="true">!</span>
+            <p><strong>In immediate danger?</strong> Call 911 or your local emergency number. This demonstration form is not monitored for emergencies.</p>
+        </div>
+
+        <section class="report-section content-width" id="report-form" aria-labelledby="report-heading">
+            <div class="section-heading">
+                <p class="eyebrow">Share information</p>
+                <h2 id="report-heading">Submit a crime report</h2>
+                <p>All fields marked <span aria-hidden="true">*</span> are required.</p>
+            </div>
+
+            <div class="demo-notice" id="demo-notice">
+                <strong>Demonstration only:</strong> This page has no connection to law enforcement. Reports are not transmitted, reviewed, or saved. Do not enter real or sensitive personal information.
+            </div>
+
+            <div class="confirmation-message" id="confirmation-message" role="status" aria-live="polite" tabindex="-1" hidden>
+                <h3>Form demonstration complete</h3>
+                <p>Your entries passed the on-page checks, but they have <strong>not</strong> been sent to an agency or stored. For a real report, contact the appropriate local or federal authorities directly.</p>
+            </div>
+
+            <form id="crime-report-form" novalidate aria-describedby="demo-notice">
+                <div class="form-group">
+                    <label for="full-name">Full name <span aria-hidden="true">*</span></label>
+                    <input id="full-name" name="fullName" type="text" autocomplete="name" maxlength="120" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email address <span aria-hidden="true">*</span></label>
+                        <input id="email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required aria-describedby="email-error">
+                        <span class="field-error" id="email-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone number <span aria-hidden="true">*</span></label>
+                        <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="40" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject or report title <span aria-hidden="true">*</span></label>
+                    <input id="subject" name="subject" type="text" autocomplete="off" maxlength="160" required aria-describedby="subject-error">
+                    <span class="field-error" id="subject-error"></span>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="crime-type">Type of crime <span aria-hidden="true">*</span></label>
+                        <select id="crime-type" name="crimeType" required aria-describedby="crime-type-error">
+                            <option value="">Select a crime type</option>
+                            <option>Cybercrime and online fraud</option>
+                            <option>Financial fraud and scams</option>
+                            <option>Identity theft</option>
+                            <option>Threats and harassment</option>
+                            <option>Violent crime</option>
+                            <option>Kidnapping and missing persons</option>
+                            <option>Drug trafficking</option>
+                            <option>Human trafficking</option>
+                            <option>Terrorism and extremism</option>
+                            <option>Organized crime</option>
+                            <option>Public corruption</option>
+                            <option>Child exploitation</option>
+                            <option>White-collar crime</option>
+                            <option>Other / Not sure</option>
+                        </select>
+                        <span class="field-error" id="crime-type-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="incident-date">Date of incident <span aria-hidden="true">*</span></label>
+                        <input id="incident-date" name="incidentDate" type="date" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Incident location <span aria-hidden="true">*</span></label>
+                    <input id="location" name="location" type="text" autocomplete="off" maxlength="200" placeholder="City, state, or general area" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Detailed description <span aria-hidden="true">*</span></label>
+                    <textarea id="description" name="description" rows="7" maxlength="5000" required aria-describedby="description-help description-error"></textarea>
+                    <span class="field-help" id="description-help">Include what happened, when it happened, and any relevant context. Do not include passwords, financial account numbers, or other sensitive information.</span>
+                    <span class="field-error" id="description-error"></span>
+                </div>
+
+                <div class="form-actions">
+                    <button class="submit-button" type="submit">Review report</button>
+                    <p class="privacy-reminder">Your entries stay in this browser page only and are not saved or sent.</p>
+                </div>
+            </form>
+        </section>
+
+        <section class="contact-resources content-width" aria-labelledby="resources-heading">
+            <div class="section-heading">
+                <p class="eyebrow">Other ways to connect</p>
+                <h2 id="resources-heading">Contact resources</h2>
+            </div>
+            <div class="resource-grid">
+                <article class="resource-panel" id="field-office">
+                    <h3>Find a local field office</h3>
+                    <p>Use this form to ask a question about finding a field office near you.</p>
+                    <a href="contact.html?topic=field-office#report-form">Ask about a local field office</a>
+                </article>
+
+                <article class="resource-panel" id="headquarters">
+                    <h3>FBI headquarters mailing address</h3>
+                    <address>
+                        J. Edgar Hoover Building<br>
+                        935 Pennsylvania Avenue NW<br>
+                        Washington, DC 20535
+                    </address>
+                    <p>This is a public mailing address. Reports submitted through this website are not delivered to the FBI.</p>
+                </article>
+
+                <article class="resource-panel resource-links">
+                    <h3>Other inquiries</h3>
+                    <p>Choose a topic to start an inquiry. Submissions remain a local demonstration until a form service is connected.</p>
+                    <ul>
+                        <li><a href="contact.html?topic=media#report-form">Media inquiry</a></li>
+                        <li><a href="contact.html?topic=records#report-form">Public records request</a></li>
+                        <li><a href="contact.html?topic=general#report-form">General inquiry</a></li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand footer-brand--small">
+                <span class="brand-mark" aria-hidden="true">CS</span>
+                <span class="brand-name">Civic Safety Information Project</span>
+            </div>
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="#footer-quick-links">Quick Links</a>
+                <a href="#footer-faqs">Frequently Asked Questions</a>
+            </nav>
+            <div class="footer-notes">
+                <section class="footer-column" id="footer-quick-links" aria-labelledby="footer-quick-links-title">
+                    <h2 id="footer-quick-links-title">Quick Links</h2>
+                    <ul>
+                        <li><a href="#report-form">Submit a report</a></li>
+                        <li><a href="#field-office">Field offices</a></li>
+                        <li><a href="#headquarters">Contact information</a></li>
+                        <li><a href="contact.html#report-form">Submit a tip</a></li>
+                    </ul>
+                </section>
+                <section class="footer-column" id="footer-faqs" aria-labelledby="footer-faqs-title">
+                    <h2 id="footer-faqs-title">Frequently Asked Questions</h2>
+                    <dl>
+                        <dt>Is a report submitted here sent to law enforcement?</dt>
+                        <dd>No. This site's report form is not monitored and does not transmit or store submissions. Contact the appropriate authorities directly to make a real report.</dd>
+                        <dt>What should I do in an emergency?</dt>
+                        <dd>Call 911 or your local emergency number.</dd>
+                    </dl>
+                </section>
+            </div>
+        </div>
+    </footer>
+    <a class="support-chat" href="https://wa.me/12817773154" target="_blank" rel="noopener noreferrer" aria-label="Chat with support on WhatsApp">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 13v-2a8 8 0 0 1 16 0v2"></path>
+            <rect x="3" y="12" width="4" height="7" rx="2"></rect>
+            <rect x="17" y="12" width="4" height="7" rx="2"></rect>
+            <path d="M17 19a5 5 0 0 1-5 3h-1"></path>
+        </svg>
+    </a>
+</body>
+</html>

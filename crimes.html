@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What We Investigate | FBI</title>
+    <link rel="icon" type="image/png" href="images/fbi-seal.png">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        #crime-hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: clamp(440px, 68vh, 720px);
+            gap: clamp(16px, 2vw, 24px);
+            padding: clamp(48px, 8vw, 112px) max(24px, calc((100% - 1220px) / 2));
+            background:
+                linear-gradient(90deg, rgba(3, 10, 20, 0.94) 0%, rgba(3, 10, 20, 0.76) 48%, rgba(3, 10, 20, 0.2) 100%),
+                linear-gradient(0deg, rgba(3, 10, 20, 0.35), rgba(3, 10, 20, 0.05)),
+                url("images/hero.png") center / cover no-repeat;
+        }
+
+        #crime-hero h1 {
+            max-width: min(100%, 900px);
+            font-size: clamp(2.15rem, 5.2vw, 4.5rem);
+            line-height: 1.05;
+            letter-spacing: -0.05em;
+            font-weight: 800;
+            text-wrap: balance;
+        }
+
+        #crime-hero p {
+            max-width: min(100%, 680px);
+            font-size: clamp(1rem, 1.35vw, 1.2rem);
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.86);
+        }
+
+        #crime-hero p:first-child {
+            color: #f5d10a;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.2em;
+        }
+
+        main > section.investigate:not(#crime-hero) {
+            width: min(100%, 1280px);
+            margin: 0 auto;
+            padding: clamp(56px, 8vw, 96px) clamp(20px, 4vw, 48px);
+        }
+
+        .investigate h2 {
+            max-width: 860px;
+            margin: 0 auto clamp(36px, 5vw, 56px);
+            font-size: clamp(2rem, 4.2vw, 3.5rem);
+            line-height: 1.08;
+            letter-spacing: -0.055em;
+            text-align: center;
+            text-wrap: balance;
+        }
+
+        .crimes-container {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: clamp(18px, 2.4vw, 28px);
+        }
+
+        .crime-card {
+            position: relative;
+            isolation: isolate;
+            display: flex;
+            min-width: 0;
+            min-height: clamp(280px, 31vw, 380px);
+            flex-direction: column;
+            justify-content: flex-end;
+            gap: 12px;
+            padding: clamp(22px, 3vw, 32px);
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse at 82% 18%, rgba(245, 209, 10, 0.2), transparent 42%),
+                linear-gradient(135deg, #17314b 0%, #0b1828 52%, #05080d 100%);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 10px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24);
+            transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+        }
+
+        .crime-card:nth-child(3n + 2) {
+            background:
+                radial-gradient(ellipse at 18% 20%, rgba(53, 115, 157, 0.38), transparent 45%),
+                linear-gradient(135deg, #182a3d 0%, #111a28 56%, #06090e 100%);
+        }
+
+        .crime-card:nth-child(3n) {
+            background:
+                radial-gradient(ellipse at 78% 82%, rgba(124, 92, 29, 0.32), transparent 44%),
+                linear-gradient(135deg, #222b35 0%, #101720 55%, #06090e 100%);
+        }
+
+        .crime-card h3 {
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            color: #f5d10a;
+            font-size: clamp(1.35rem, 2vw, 1.75rem);
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            text-transform: uppercase;
+        }
+
+        .crime-card p {
+            position: relative;
+            z-index: 1;
+            max-width: 38ch;
+            margin: 0;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.98rem;
+            line-height: 1.65;
+        }
+
+        @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+            .crime-card:hover {
+                transform: scale(1.035);
+                box-shadow: 0 20px 42px rgba(0, 0, 0, 0.38);
+            }
+        }
+
+        @media (max-width: 980px) {
+            .crimes-container {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 700px) {
+            #crime-hero {
+                min-height: 560px;
+                min-height: 72svh;
+                padding: 72px 18px;
+                background-position: 58% center;
+                background-image:
+                    linear-gradient(90deg, rgba(3, 10, 20, 0.9), rgba(3, 10, 20, 0.54)),
+                    linear-gradient(0deg, rgba(3, 10, 20, 0.42), rgba(3, 10, 20, 0.08)),
+                    url("images/hero.png");
+            }
+
+            #crime-hero h1 {
+                width: 100%;
+                max-width: none;
+                font-size: clamp(1.9rem, 7vw, 2.8rem);
+                line-height: 1.08;
+            }
+
+            main > section.investigate:not(#crime-hero) {
+                padding-right: 24px;
+                padding-left: 24px;
+            }
+
+            .crimes-container {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .crime-card {
+                min-height: clamp(280px, 78vw, 360px);
+            }
+        }
+
+        @media (max-width: 420px) {
+            #crime-hero {
+                min-height: 520px;
+                min-height: 78svh;
+                padding: 64px 16px;
+            }
+
+            main > section.investigate:not(#crime-hero) {
+                padding-right: 18px;
+                padding-left: 18px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .crime-card {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="logo-cont">
+        <a class="mobile-brand" href="index.html" aria-label="FBI home">
+            <span>FBI</span>
+            <span class="mobile-brand-accent" aria-hidden="true"></span>
+        </a>
+        <a href="index.html" aria-label="FBI home">
+            <img src="images/fbi-seal.png" alt="FBI seal">
+        </a>
+        <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="site-navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="nav" id="site-navigation" aria-label="Primary navigation">
+            <button class="menu-close" type="button">
+                <span>Close menu</span>
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <ul class="nav-li"><a href="wanted.html" class="nav-link">Wanted Persons</a></ul>
+            <ul class="nav-li"><a href="index.html" class="nav-link">Home</a></ul>
+            <ul class="nav-li"><a href="crimes.html" class="nav-link" aria-current="page">What We Investigate</a></ul>
+            <ul class="nav-li"><a href="contact.html" class="nav-link">How We Can Help You</a></ul>
+            <ul class="nav-li"><a href="contact.html#report-form" class="nav-link">Submit a Tip</a></ul>
+            <ul class="nav-li"><a href="about.html" class="nav-link">About</a></ul>
+        </nav>
+    </header>
+    <button class="menu-backdrop" type="button" aria-label="Close navigation menu" hidden></button>
+
+    <main>
+        <section id="crime-hero">
+            <p>WHAT WE INVESTIGATE</p>
+            <h1>
+                Investigative priorities that protect the American people
+            </h1>
+            <p>
+                The FBI investigates a broad range of threats including terrorism, cyber intrusions, public corruption, violent crime, and transnational organized crime.
+            </p>
+        </section>
+        <section class="investigate">
+            <h2>What we investigate</h2>
+            <div class="crimes-container">
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-shell">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <span class="footer-brand-mark">F</span>
+                        <div class="footer-brand-name">FBI</div>
+                    </div>
+                    <ul class="footer-links">
+                        <li><a href="contact.html#report-form">Submit a Tip</a></li>
+                        <li><a href="crimes.html">Crime Statistics</a></li>
+                        <li><a href="about.html#mission">History</a></li>
+                        <li><a href="about.html">FOIA</a></li>
+                        <li><a href="contact.html">Scams &amp; Safety</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Law Enforcement</a></li>
+                        <li><a href="contact.html">Victims</a></li>
+                        <li><a href="about.html">Parents and Caregivers</a></li>
+                        <li><a href="about.html">Students</a></li>
+                        <li><a href="contact.html">Businesses</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Frequently Asked Questions</h3>
+                    <ul class="faq-list">
+                        <li><a href="contact.html#report-form">How do I submit a tip?</a></li>
+                        <li><a href="contact.html#field-office">Where is my local field office?</a></li>
+                        <li><a href="crimes.html">What does the FBI investigate?</a></li>
+                        <li><a href="contact.html">How do I report a scam?</a></li>
+                        <li><a href="contact.html#headquarters">How can I contact the FBI?</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Connect</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">Legal Notices</a></li>
+                        <li><a href="about.html">Privacy Policy</a></li>
+                        <li><a href="https://www.justice.gov/" target="_blank" rel="noreferrer">Department of Justice</a></li>
+                        <li><a href="https://www.usa.gov/" target="_blank" rel="noreferrer">USA.gov</a></li>
+                        <li><a href="https://www.justice.gov/" target="_blank" rel="noreferrer">No FEAR Act</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom" style="max-width: 1220px; margin: 22px auto 0;">
+                <div class="footer-address">
+                    935 Pennsylvania Ave NW<br>
+                    Washington DC 20535
+                </div>
+
+                <div class="social-links" aria-label="Social media links">
+                    <a class="social-icon" href="https://facebook.com" target="_blank" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M13.5 22v-8h2.7l.4-3h-3.1V7.5c0-.9.3-1.5 1.6-1.5H17V3.2c-.3 0-1.3-.2-2.5-.2-2.5 0-4.2 1.5-4.2 4.4V11H8v3h2.3v8h3.2Z"/></svg>
+                    </a>
+                    <a class="social-icon" href="https://x.com" target="_blank" aria-label="X">
+                        <svg viewBox="0 0 24 24"><path d="M18.9 2h3.6l-7.8 8.9L23 22h-7l-5.5-7.4L4.6 22H1l8.4-9.6L1 2h7.1l5 6.8L18.9 2Zm-1.3 18h1.9L7.3 3.9H5.3l12.3 16.1Z"/></svg>
+                    </a>
+                    <a class="social-icon" href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24"><path d="M6.9 8.6A1.8 1.8 0 1 1 6.9 5a1.8 1.8 0 0 1 0 3.6ZM5.2 9.9h3.3V19H5.2V9.9Zm5.5 0h3.2v1.3h.1c.4-.8 1.6-1.7 3.4-1.7 3.7 0 4.3 2.4 4.3 5.5V19h-3.3v-17.7h3.3v1.5c.8-1.1 2.2-2.2 4.8-2.2 5.1 0 6 3.3 6 7.7V19h-3.3v-17.7h3.3v1.5c.8-1.1 2.2-2.2 4.8-2.2 5.1 0 6 3.3 6 7.7V19h-3.3v-17.7h3.3v1.5c.8-1.1 2.2-2.2 4.8-2.2 5.1 0 6 3.3 6 7.7V19h-3.3v-17.7H5.2v9.6Z"/></svg>
+                    </a>
+                    <a class="social-icon" href="https://instagram.com" target="_blank" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5Zm5.1-3.1a1.3 1.3 0 1 1-1.3-1.3 1.3 1.3 0 0 1 1.3 1.3Z"/></svg>
+                    </a>
+                    <a class="social-icon" href="https://youtube.com" target="_blank" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24"><path d="M22.5 8.1a3 3 0 0 0-2.1-2.1C18.8 5.5 12 5.5 12 5.5s-6.8 0-8.4.5A3 3 0 0 0 1.5 8.1 31.2 31.2 0 0 0 1 12a31.2 31.2 0 0 0 .5 3.9 3 3 0 0 0 2.1 2.1c1.6.5 8.4.5 8.4.5s6.8 0 8.4-.5a3 3 0 0 0 2.1-2.1A31.2 31.2 0 0 0 23 12a31.2 31.2 0 0 0-.5-3.9ZM10 15.5v-7l6 3.5-6 3.5Z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector(".menu-toggle");
+        const menuClose = document.querySelector(".menu-close");
+        const navigation = document.querySelector(".nav");
+        const menuBackdrop = document.querySelector(".menu-backdrop");
+        const mobileNavigation = window.matchMedia("(max-width: 767px)");
+        const crimes = [
+            {
+                title: "Terrorism",
+                description: "The FBI is the nation's lead agency for investigating and preventing acts of domestic and international terrorism"
+            },
+
+             {
+                title: "Violent Crime",
+                description: "The FBI, with its law enforcement partners, plays a key role in combating violent crimes involving gangs, crimes against children, crimes in Indian country, fugitives and missing persons, lidnappings and bank robberies."
+            },
+
+             {
+                title: "Cyber",
+                description: "The FBI is the lead agency for investigating cyberattacks by  criminals, overseas adversaries and terrorrists, the threat is incredibly serious and growing."
+            },
+
+             {
+                title: "Transnational and organized crime",
+                description: "The FBI is dedicated to eliminating transnational organized crime groups that pose the greatest threat to the national and economic security of the united states."
+            },
+
+             {
+                title: "Counterintelligence and espioniage",
+                description: "The FBI is the lead agency for exposing, preventing, and investigating intelligence activities, including espionage, in the U.S."
+            },
+
+             {
+                title: "weapon of mass destruction",
+                description: "The FBI is the lead federal agency for responding to threats from weapons of mass destruction (WMD)."
+            },
+        ];
+
+        function renderCrimes(){
+            const crimeContainer = document.querySelector(".crimes-container");
+            crimes.forEach(crime => {
+                const card = document.createElement("article");
+                card.className = "crime-card";
+
+                const title = document.createElement("h3");
+                title.textContent = crime.title;
+
+                const description = document.createElement("p");
+                description.textContent = crime.description;
+
+                card.append(title, description);
+                crimeContainer.append(card);
+            });
+        }
+
+        renderCrimes()
+
+        function setMenuOpen(isOpen) {
+            const shouldOpen = mobileNavigation.matches && isOpen;
+
+            navigation.classList.toggle("is-open", shouldOpen);
+            document.body.classList.toggle("menu-open", shouldOpen);
+            menuToggle.setAttribute("aria-expanded", String(shouldOpen));
+            menuToggle.setAttribute("aria-label", shouldOpen ? "Close navigation menu" : "Open navigation menu");
+            navigation.setAttribute("aria-hidden", String(mobileNavigation.matches && !shouldOpen));
+            navigation.inert = mobileNavigation.matches && !shouldOpen;
+            menuBackdrop.hidden = !shouldOpen;
+
+            if (shouldOpen) {
+                menuClose.focus();
+            } else if (mobileNavigation.matches) {
+                menuToggle.focus();
+            }
+        }
+
+        menuToggle.addEventListener("click", () => setMenuOpen(true));
+        menuClose.addEventListener("click", () => setMenuOpen(false));
+        menuBackdrop.addEventListener("click", () => setMenuOpen(false));
+        navigation.addEventListener("click", event => {
+            if (event.target.closest("a")) {
+                setMenuOpen(false);
+            }
+        });
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape" && navigation.classList.contains("is-open")) {
+                setMenuOpen(false);
+            }
+        });
+        mobileNavigation.addEventListener("change", () => setMenuOpen(false));
+        setMenuOpen(false);
+    </script>
+    <a class="support-chat" href="https://wa.me/12817773154" target="_blank" rel="noopener noreferrer" aria-label="Chat with support on WhatsApp">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 13v-2a8 8 0 0 1 16 0v2"></path>
+            <rect x="3" y="12" width="4" height="7" rx="2"></rect>
+            <rect x="17" y="12" width="4" height="7" rx="2"></rect>
+            <path d="M17 19a5 5 0 0 1-5 3h-1"></path>
+        </svg>
+    </a>
+</body>
+</html>

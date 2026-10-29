@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-labelledby="title">
+  <title id="title">Neutral portrait placeholder</title>
+  <rect width="400" height="500" fill="#242424"/>
+  <circle cx="200" cy="170" r="78" fill="#666"/>
+  <path d="M65 500c8-111 58-169 135-169s127 58 135 169" fill="#666"/>
+  <path d="M32 32h336v436H32z" fill="none" stroke="#f5d10a" stroke-opacity=".35" stroke-width="2"/>
+</svg>
