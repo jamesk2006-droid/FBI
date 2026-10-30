@@ -35,6 +35,10 @@ html {
     overflow-x: hidden;
 }
 
+input[type = "date"]{
+    overflow: hidden !important 
+}
+
 body {
     min-width: 320px;
     margin: 0;
