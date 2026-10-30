@@ -79,7 +79,7 @@ a:hover {
     transform: translateY(-3px);
 }
 input, textarea, select{
-    overflow-x: hidden;
+    overflow-x: hidden !important;
 }
 .support-chat svg {
     width: 28px;
